@@ -1,10 +1,15 @@
 {
   "name": "test-admin-app-redux",
   "version": "1.0.0",
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.15.1"
+  },
   "description": "This is the redo test",
   "main": "index.js",
   "scripts": {
-    "test": "Testing"
+    "test": "Testing",
+    "heroku-postbuild": "npm install && npm run build"
   },
   "keywords": [
     "Admin",
