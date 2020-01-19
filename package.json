@@ -1,0 +1,21 @@
+{
+  "name": "test-admin-app-redux",
+  "version": "1.0.0",
+  "description": "This is the redo test",
+  "main": "index.js",
+  "scripts": {
+    "test": "Testing"
+  },
+  "keywords": [
+    "Admin",
+    "App"
+  ],
+  "author": "Nathaniel Sandberg",
+  "license": "MIT",
+  "dependencies": {
+    "@okta/jwt-verifier": "^1.0.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-jsonschema": "^1.1.6"
+  }
+}

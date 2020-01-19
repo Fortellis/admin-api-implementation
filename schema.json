@@ -1,0 +1,142 @@
+{
+    "type": "object",
+    "title": "The Root Schema",
+    "required": [
+      "entityInfo",
+      "solutionInfo",
+      "userInfo",
+      "apiInfo",
+      "subscriptionId",
+      "connectionId"
+    ],
+    "properties": {
+      "entityInfo": {
+        "type": "object",
+        "title": "The Entityinfo Schema",
+        "required": [
+          "id",
+          "name",
+          "address",
+          "countryCode",
+          "phoneNumber"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "name": {
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "address": {
+            "type": "string",
+            "title": "The Address Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "countryCode": {
+            "type": "string",
+            "title": "The Countrycode Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "title": "The Phonenumber Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          }
+        }
+      },
+      "solutionInfo": {
+        "type": "object",
+        "title": "The Solutioninfo Schema",
+        "required": [
+          "id",
+          "name",
+          "developer",
+          "contactEmail"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "name": {
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "developer": {
+            "type": "string",
+            "title": "The Developer Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "contactEmail": {
+            "type": "string",
+            "title": "The Contactemail Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          }
+        }
+      },
+      "userInfo": {
+        "type": "object",
+        "title": "The Userinfo Schema",
+        "required": [
+          "fortellisId"
+        ],
+        "properties": {
+          "fortellisId": {
+            "type": "string",
+            "title": "The Fortellisid Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          }
+        }
+      },
+      "apiInfo": {
+        "type": "object",
+        "title": "The Apiinfo Schema",
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "name": {
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "pattern": "^(.*)$"
+          }
+        }
+      },
+      "subscriptionId": {
+        "type": "string",
+        "title": "The Subscriptionid Schema",
+        "default": "",
+        "pattern": "^(.*)$"
+      },
+      "connectionId": {
+        "type": "string",
+        "title": "The Connectionid Schema",
+        "default": "",
+        "pattern": "^(.*)$"
+      }
+    }
+  }
