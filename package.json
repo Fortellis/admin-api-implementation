@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "Testing",
-    "heroku-postbuild": "npm install && npm run build"
+    "start": "node index.js"
   },
   "keywords": [
     "Admin",
