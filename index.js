@@ -73,7 +73,7 @@ if(process.env.NODE_ENV === "production"){
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(3000, '127.0.0.1')
+app.listen(PORT)
 console.log("Node server running on port" +PORT)
 
 function verifyToken(req, res, next) {
