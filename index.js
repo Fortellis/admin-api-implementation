@@ -64,6 +64,16 @@ app.post('/deleteRequest',(req, res)=>{
     })
 })
 
+app.get('/connectionRequests', (req, res)=>{
+    fs.readFile('./connectionRequests.json', 'utf-8', function(err, data){
+        if (err) throw err
+        const arrayOfObjects = JSON.parse(data)
+        console.log("You have requested refreshed information.")
+        res.header("Content-Type", "application/json")
+        res.send(arrayOfObjects)
+    })
+})
+
 if(process.env.NODE_ENV === "production"){
     app.use(express.static('client/build'));
     app.get('*', (req,res)=>{
