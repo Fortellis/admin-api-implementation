@@ -7,23 +7,19 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json({extended:true}), express.json())
 
-const OktaJwtVerifier = require ('@okta/jwt-verifier');
+const JwtVerifier = require ('@okta/jwt-verifier');
 
-const oktaDomain = 'https://verify-dev.fortellis.io';
+const domain = 'https://identity-dev.fortellis.io';
 
-const oktaJwtVerifier = new OktaJwtVerifier({
-    issuer: `${oktaDomain}/oauth2`,
+const jwtVerifier = new JwtVerifier({
+    issuer: `${domain}/oauth2/aus1ni5i9n9WkzcYa2p7`,
     assertClaims: {
-        aud: "fortellis"
+        aud: "api_providers"
     }
 })
 
-app.get('/healthCheck', (req, res)=>{
-    res.send({"status":"Up"})
-})
-
 app.post('/activate', [verifyToken, validateSchema({body:schema})],function(req, res){
-    oktaJwtVerifier.verifyAccessToken(req.token, "fortellis")
+    jwtVerifier.verifyAccessToken(req.token, "api_providers")
     .then(jwt => {
         res.set('Content-Type', 'text/html');
         console.log(jwt.claims.aud);
