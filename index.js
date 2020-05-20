@@ -47,6 +47,8 @@ app.post('/activate', [verifyToken, validateSchema({body:schema})],function(req,
 
 app.get('/activate', (req, res)=>{res.json({"status":"Up"})});
 
+app.get('/healthCheck', (req, res)=>{res.json({"status":"Up"})});
+
 app.post('/deleteRequest',(req, res)=>{
     const deleteSubscriptionId = req.body.subscriptionId;
     console.log(deleteSubscriptionId);
