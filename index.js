@@ -45,6 +45,29 @@ app.post('/activate', [verifyToken, validateSchema({body:schema})],function(req,
     })
 })
 
+app.post('/deactivate/:connectionId', [verifyToken],function(req, res){
+    jwtVerifier.verifyAccessToken(req.token, "api_providers")
+    .then(jwt => {
+        res.set('Content-Type', 'text/html');
+        console.log(jwt.claims.aud);
+        //Return the minified payload that Fortellis expects to receive back.
+        res.send('{"links": [{"href": "localhost:3000", "rel": "self", "method": "post", "title": "Deactivation Notification"}]}');
+        console.log(req.params.connectionId);
+        fs.readFile('./deactivationRequests.json', 'utf-8', function(err, data){
+            if(err) throw err
+            const arrayOfObjects = JSON.parse(data)
+            arrayOfObjects.deactivationRequests.push(req.params)
+            console.log(arrayOfObjects)
+            const writer = fs.createWriteStream('./deactivationRequests.json');
+            writer.write(JSON.stringify(arrayOfObjects))
+        })
+    })
+    .catch(err => {
+        res.sendStatus(403);
+
+    })
+})
+
 app.post('/deleteRequest',(req, res)=>{
     const deleteSubscriptionId = req.body.subscriptionId;
     console.log(deleteSubscriptionId);
@@ -65,6 +88,16 @@ app.get('/connectionRequests', (req, res)=>{
         if (err) throw err
         const arrayOfObjects = JSON.parse(data)
         console.log("You have requested refreshed information.")
+        res.header("Content-Type", "application/json")
+        res.send(arrayOfObjects)
+    })
+})
+
+app.get('/deactivationRequests', (req, res)=>{
+    fs.readFile('./deactivationRequests.json', 'utf-8', function(err, data){
+        if (err) throw err
+        const arrayOfObjects = JSON.parse(data)
+        console.log("You have asked for your deactivations.")
         res.header("Content-Type", "application/json")
         res.send(arrayOfObjects)
     })
