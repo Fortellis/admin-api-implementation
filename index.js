@@ -14,12 +14,12 @@ const domain = 'https://identity-dev.fortellis.io';
 const jwtVerifier = new JwtVerifier({
     issuer: `${domain}/oauth2/aus1ni5i9n9WkzcYa2p7`,
     assertClaims: {
-        aud: "api_providers"
+        aud: "fortellis"
     }
 })
 
 app.post('/activate', [verifyToken],function(req, res){
-    jwtVerifier.verifyAccessToken(req.token, "api_providers")
+    jwtVerifier.verifyAccessToken(req.token, "fortellis")
     .then(jwt => {
         res.set('Content-Type', 'text/html');
         console.log(jwt.claims.aud);
@@ -46,7 +46,7 @@ app.post('/activate', [verifyToken],function(req, res){
 })
 
 app.post('/deactivate/:connectionId', [verifyToken],function(req, res){
-    jwtVerifier.verifyAccessToken(req.token, "api_providers")
+    jwtVerifier.verifyAccessToken(req.token, "fortellis")
     .then(jwt => {
         res.set('Content-Type', 'text/html');
         console.log(jwt.claims.aud);
