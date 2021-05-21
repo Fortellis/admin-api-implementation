@@ -18,7 +18,7 @@ const jwtVerifier = new JwtVerifier({
     }
 })
 
-app.post('/activate', [verifyToken],function(req, res){
+app.post('/activate', [verifyToken, validateSchema({body:schema})],function(req, res){
     jwtVerifier.verifyAccessToken(req.token, "fortellis")
     .then(jwt => {
         res.set('Content-Type', 'text/html');
