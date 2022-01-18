@@ -9,10 +9,8 @@ app.use(bodyParser.json({extended:true}), express.json())
 
 const JwtVerifier = require ('@okta/jwt-verifier');
 
-const domain = 'https://identity-dev.fortellis.io';
-
 const jwtVerifier = new JwtVerifier({
-    issuer: `${domain}/oauth2/aus1ni5i9n9WkzcYa2p7`,
+    issuer: `https://identity.fortellis.io/oauth2/aus1ni5i9n9WkzcYa2p7`,
     assertClaims: {
         aud: "fortellis"
     }
